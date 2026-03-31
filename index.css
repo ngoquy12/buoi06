@@ -1,0 +1,204 @@
+:root {
+  --ink: #1a1a2e;
+  --paper: #faf9f6;
+  --accent: #c84b31;
+  --accent-soft: #f2e8e5;
+  --muted: #8a8a9a;
+  --border: #e2ddd8;
+  --row-even: #f5f3ef;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "DM Sans", sans-serif;
+  background: var(--paper);
+  min-height: 100vh;
+  padding: 48px 20px;
+  color: var(--ink);
+
+  /* Subtle grain texture */
+}
+
+.container {
+  max-width: 520px;
+  margin: auto;
+  background: #fff;
+  padding: 40px 36px 36px;
+  border-radius: 2px;
+  border: 1px solid var(--border);
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.04),
+    0 8px 32px rgba(26, 26, 46, 0.07),
+    6px 6px 0 0 var(--ink);
+}
+
+h2 {
+  font-family: "Playfair Display", serif;
+  font-size: 26px;
+  font-weight: 600;
+  text-align: left;
+  color: var(--ink);
+  letter-spacing: -0.3px;
+  padding-bottom: 16px;
+  border-bottom: 2px solid var(--ink);
+  margin-bottom: 28px;
+  position: relative;
+}
+
+h2::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  right: 0;
+  width: 28px;
+  height: 2px;
+  background: var(--accent);
+}
+
+.field-group {
+  margin-bottom: 4px;
+}
+
+input {
+  width: 100%;
+  padding: 11px 14px;
+  margin-top: 10px;
+  background: var(--paper);
+  border: 1.5px solid var(--border);
+  border-radius: 2px;
+  outline: none;
+  font-family: "DM Sans", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--ink);
+  transition:
+    border-color 0.18s,
+    background 0.18s;
+  letter-spacing: 0.01em;
+}
+
+input::placeholder {
+  color: var(--muted);
+  font-weight: 300;
+}
+
+input:focus {
+  border-color: var(--ink);
+  background: #fff;
+}
+
+span {
+  font-size: 12px;
+  color: var(--accent);
+  display: block;
+  height: 18px;
+  margin-top: 3px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 18px;
+  background: var(--ink);
+  color: #fff;
+  border: 2px solid var(--ink);
+  border-radius: 2px;
+  cursor: pointer;
+  font-family: "DM Sans", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  transition:
+    background 0.18s,
+    color 0.18s,
+    transform 0.1s;
+  position: relative;
+}
+
+button::after {
+  position: absolute;
+  right: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 16px;
+  transition: right 0.18s;
+}
+
+button:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+button:hover::after {
+  right: 14px;
+}
+
+button:active {
+  transform: translateY(1px);
+}
+
+/* ── Table ── */
+table {
+  width: 100%;
+  margin-top: 28px;
+  border-collapse: collapse;
+  font-size: 13.5px;
+}
+
+thead {
+  border-bottom: 2px solid var(--ink);
+}
+
+th {
+  background: transparent;
+  color: var(--muted);
+  font-family: "DM Sans", sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 10px 12px;
+  text-align: left;
+}
+
+td {
+  padding: 11px 12px;
+  text-align: left;
+  color: var(--ink);
+  font-weight: 400;
+  border-bottom: 1px solid var(--border);
+}
+
+tr:nth-child(even) td {
+  background: var(--row-even);
+}
+
+tr:hover td {
+  background: var(--accent-soft);
+  transition: background 0.15s;
+}
+
+tbody tr {
+  transition: background 0.15s;
+}
+
+/* Empty state hint */
+#tableBody:empty::after {
+  content: "Chưa có sinh viên nào.";
+  display: block;
+  text-align: center;
+  color: var(--muted);
+  font-size: 13px;
+  padding: 20px 0;
+  font-style: italic;
+}

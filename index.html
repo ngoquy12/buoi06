@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=DM+Sans:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./index.css" />
+  </head>
+
+  <body>
+    <div class="container">
+      <h2>Quản lý sinh viên</h2>
+
+      <input id="name" placeholder="Nhập tên" />
+      <span id="errorName"></span>
+
+      <input id="email" placeholder="Nhập email" />
+      <span id="errorEmail"></span>
+
+      <input id="age" placeholder="Nhập tuổi" />
+      <span id="errorAge"></span>
+
+      <button id="btnAdd">Thêm sinh viên</button>
+
+      <table border="1">
+        <thead>
+          <tr>
+            <th>Tên</th>
+            <th>Email</th>
+            <th>Tuổi</th>
+            <th>Chức năng</th>
+          </tr>
+        </thead>
+        <tbody id="tableBody"></tbody>
+      </table>
+    </div>
+    <script src="main.js"></script>
+  </body>
+</html>
