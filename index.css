@@ -8,6 +8,12 @@
   --row-even: #f5f3ef;
 }
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 *,
 *::before,
 *::after {
@@ -37,29 +43,6 @@ body {
     0 1px 2px rgba(0, 0, 0, 0.04),
     0 8px 32px rgba(26, 26, 46, 0.07),
     6px 6px 0 0 var(--ink);
-}
-
-h2 {
-  font-family: "Playfair Display", serif;
-  font-size: 26px;
-  font-weight: 600;
-  text-align: left;
-  color: var(--ink);
-  letter-spacing: -0.3px;
-  padding-bottom: 16px;
-  border-bottom: 2px solid var(--ink);
-  margin-bottom: 28px;
-  position: relative;
-}
-
-h2::after {
-  content: "";
-  position: absolute;
-  bottom: -2px;
-  right: 0;
-  width: 28px;
-  height: 2px;
-  background: var(--accent);
 }
 
 .field-group {
@@ -201,4 +184,37 @@ tbody tr {
   font-size: 13px;
   padding: 20px 0;
   font-style: italic;
+}
+
+.overlay {
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal {
+  background-color: #fff;
+  width: 550px;
+  padding: 20px 24px;
+  border-radius: 8px;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-content {
+  padding: 24px 0;
+}
+
+.modal-footer {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  gap: 12px;
 }

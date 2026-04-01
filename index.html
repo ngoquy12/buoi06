@@ -14,7 +14,7 @@
 
   <body>
     <div class="container">
-      <h2>Quản lý sinh viên</h2>
+      <h2 id="title-form">Thêm mới sinh viên</h2>
 
       <input id="name" placeholder="Nhập tên" />
       <span id="errorName"></span>
@@ -33,12 +33,30 @@
             <th>Tên</th>
             <th>Email</th>
             <th>Tuổi</th>
-            <th>Chức năng</th>
+            <th colspan="2">Chức năng</th>
           </tr>
         </thead>
         <tbody id="tableBody"></tbody>
       </table>
     </div>
+
+    <!-- Modal xác nhận xóa -->
+    <div id="modal-confirm" style="display: none" class="overlay">
+      <div class="modal">
+        <div class="modal-header">
+          <h2 class="modal-title">Xác nhận xóa</h2>
+          <span id="icon-close">❌</span>
+        </div>
+        <div class="modal-content">
+          <p>Bạn có chắc chắn muốn xóa sinh viên này không?</p>
+        </div>
+        <div class="modal-footer">
+          <button id="btn-cancel">Hủy</button>
+          <button id="btn-confirmed">Xác nhận</button>
+        </div>
+      </div>
+    </div>
+
     <script src="main.js"></script>
   </body>
 </html>
