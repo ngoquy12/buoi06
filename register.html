@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form id="form">
+      <input id="fullname" type="text" placeholder="Nhập họ và tên" /> <br />
+      <span id="error-fullname" style="display: none"
+        >Họ và tên không được để trống</span
+      >
+      <br />
+
+      <input id="email" type="text" placeholder="Nhập email" /> <br />
+      <span id="error-email" style="display: none"
+        >Email không được để trống</span
+      >
+      <br />
+
+      <input id="password" type="password" placeholder="Nhập mật khẩu" /> <br />
+      <span id="error-password" style="display: none"
+        >Mật khẩu không được để trống</span
+      >
+      <br />
+
+      <input
+        id="re-password"
+        type="password"
+        placeholder="Xác nhận mật khẩu"
+      /><br />
+      <span id="error-rePassword" style="display: none"
+        >Mật khẩu không được để trống</span
+      >
+      <br />
+
+      <button>Đăng ký</button>
+    </form>
+
+    <script>
+      // Hàm kiểm tra định dạng email
+      const validateEmail = (email) => {
+        return String(email)
+          .toLowerCase()
+          .match(
+            /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+          );
+      };
+
+      console.log("check 1: ", validateEmail("123"));
+      console.log("check 2: ", validateEmail("abc2@gmail.com"));
+
+      // 1. Lấy phần tử trong DOM
+      const fullnameInputElement = document.querySelector("#fullname");
+      const emailInputElement = document.querySelector("#email");
+      const passwordInputElement = document.querySelector("#password");
+      const rePasswordInputElement = document.querySelector("#re-password");
+      const formElement = document.querySelector("#form");
+      const errorFullname = document.querySelector("#error-fullname");
+      const errorEmail = document.querySelector("#error-email");
+      const errorPassword = document.querySelector("#error-password");
+      const errorRePassword = document.querySelector("#error-rePassword");
+
+      const users = JSON.parse(localStorage.getItem("users")) || [];
+
+      console.log(users);
+
+      // 2. Bắt sự kiện submit của Form
+      formElement.addEventListener("submit", (event) => {
+        // Ngăn chặn sự kiện mặc định của form (load lại trang)
+        event.preventDefault();
+
+        // 3. Kiểm tra dữ liệu đầu vào
+        if (!fullnameInputElement.value) {
+          errorFullname.style.display = "block";
+        } else {
+          errorFullname.style.display = "none";
+        }
+
+        if (!emailInputElement.value) {
+          errorEmail.style.display = "block";
+        } else {
+          // Nếu đã có dữ liệu thì tiến hành kiểm tra định dạng
+          if (!validateEmail(emailInputElement.value)) {
+            // Hiển thị lỗi và cập nhật nôi dung cho thẻ span
+            errorEmail.style.display = "block";
+            errorEmail.textContent = "Email không đúng định dạng";
+          } else {
+            // Clear các lỗi
+            errorEmail.style.display = "none";
+          }
+        }
+
+        if (!passwordInputElement.value) {
+          errorPassword.style.display = "block";
+        } else {
+          errorPassword.style.display = "none";
+        }
+
+        if (!rePasswordInputElement.value) {
+          errorRePassword.style.display = "block";
+        } else {
+          errorRePassword.style.display = "none";
+        }
+
+        // 3.1. Nếu dữ liệu không hợp lệ -> Hiển thị lỗi
+        // 3.2. Nếu dữ liệu thỏa mãn -> đến bước 4
+
+        // 4. Gom các thông tin từ Form thành 1 object duy nhất
+        const newUser = {
+          id: Math.ceil(Math.random() * 10000000),
+          fullName: fullnameInputElement.value,
+          email: emailInputElement.value,
+          password: passwordInputElement.value,
+        };
+
+        // 5. Lưu dữ liệu vào trong 1 mảng
+        users.unshift(newUser);
+
+        // 6. Lưu mảng ở bước 5 lên localStorage
+        localStorage.setItem("users", JSON.stringify(users));
+
+        // 7. Điều hướng về trang đăng nhập
+        window.location.href = "login.html";
+      });
+    </script>
+  </body>
+</html>
