@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style>
+      .btn-active {
+        background-color: red;
+        color: #fff;
+      }
+    </style>
+  </head>
+  <body>
+    <table border="1">
+      <thead>
+        <tr>
+          <th>STT</th>
+          <th>Họ và tên</th>
+          <th>Tuổi</th>
+          <th>Email</th>
+        </tr>
+      </thead>
+
+      <tbody id="tbody">
+        <tr>
+          <td>1</td>
+          <td>Nguyễn Văn A</td>
+          <td>20</td>
+          <td>nva@gmail.com</td>
+        </tr>
+      </tbody>
+    </table>
+    <br />
+    <div style="display: flex; gap: 12px">
+      <button id="btn-prev">Prev</button>
+      <div id="button-number"></div>
+      <button id="btn-next">Next</button>
+    </div>
+
+    <script src="./pagination.js"></script>
+  </body>
+</html>
